@@ -17,6 +17,8 @@ project(v2x_if_ros_msg)
 
 add_subdirectory(its_container_v2)
 add_subdirectory(cam_v2)
+add_subdirectory(mcm_dmove)
+add_subdirectory(mcm_transaid)
 add_subdirectory(dsrc_v2/dsrc_v2_electronicregistrationidentificationvehicledatamodule)
 add_subdirectory(dsrc_v2/dsrc_v2_dsrc)
 add_subdirectory(dsrc_v2/dsrc_v2_addgrpc)
@@ -27,6 +29,7 @@ add_subdirectory(dsrc_v2/dsrc_v2_spatem_pdu_descriptions)
 add_subdirectory(dsrc_v2/dsrc_v2_srem_pdu_descriptions)
 add_subdirectory(dsrc_v2/dsrc_v2_ssem_pdu_descriptions)
 
+add_subdirectory(cpm_v1_19)
 
 set(PACKAGE_VENDOR "DLR TS-KOS-SAI")
 set(PACKAGE_DESCRIPTION "v2x_if_ros_msg")
