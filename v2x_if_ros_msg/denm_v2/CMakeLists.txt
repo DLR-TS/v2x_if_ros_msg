@@ -25,7 +25,11 @@ cmake_minimum_required(VERSION 3.13)
 project(denm_v2_denm_pdu_descriptions)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++17)
+
+
+add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 find_package(catkin REQUIRED COMPONENTS
     roscpp
@@ -85,7 +89,7 @@ install(TARGETS sender RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 ##------------------------------------------------##
 
 catkin_package(
-    INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
+    # INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
     CATKIN_DEPENDS message_runtime std_msgs
     # CATKIN_DEPENDS message_runtime roscpp
 )
