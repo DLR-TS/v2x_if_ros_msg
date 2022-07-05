@@ -1,0 +1,12 @@
+
+SPDX-License-Identifier: EPL-2.0
+
+http://www.eclipse.org/legal/epl-2.0.
+terms of the Eclipse Public License 2.0 which is available at
+This program and the accompanying materials are made available under the
+
+Eclipse ADORe, Automated Driving Open Research https://eclipse.org/adore
+
+Institute of Transportation Systems. (https://www.dlr.de/ts/)
+Copyright (C) 2017-2021 German Aerospace Center e.V. (https://www.dlr.de)
+

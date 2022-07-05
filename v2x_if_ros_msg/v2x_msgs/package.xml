@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+#********************************************************************************
+#* Copyright (C) 2017-2020 German Aerospace Center (DLR). 
+#* Eclipse ADORe, Automated Driving Open Research https://eclipse.org/adore
+#*
+#* This program and the accompanying materials are made available under the 
+#* terms of the Eclipse Public License 2.0 which is available at
+#* http://www.eclipse.org/legal/epl-2.0.
+#*
+#* SPDX-License-Identifier: EPL-2.0 
+#*
+#* Contributors: 
+#*   Thomas Lobig - initial API and implementation
+#********************************************************************************
+-->
+<package format="2">
+  <name>v2x_if_ros_msgs</name>
+  <version>0.0.1</version>
+  <description>Definition of ROS messages for v2x communication.</description>
+  <maintainer email="Thomas.Lobig@DLR.de">Thomas Lobig</maintainer>
+  <license>EPL-2.0</license>
+     <build_depend>message_generation</build_depend> 
+     <exec_depend>message_runtime</exec_depend>
+     <!-- <build_depend>its_container_v2_its_container</build_depend> 
+     <exec_depend>its_container_v2_its_container</exec_depend> -->
+     <depend>cam_v2</depend>
+     <depend>dsrc_v2_dsrc</depend>
+     <depend>dsrc_v2_mapem_pdu_descriptions</depend>
+     <depend>dsrc_v2_spatem_pdu_descriptions</depend>
+     <!-- <depend>dsrc_v2_efcdsrcapplication</depend> it's even missing a component! dsrc_v2_efcdsrcgeneric -->
+     <depend>dsrc_v2_srem_pdu_descriptions</depend>
+     <depend>dsrc_v2_ssem_pdu_descriptions</depend>
+     <depend>cpm_v1_19</depend>
+     <depend>mcm_dmove_mcm_dmove</depend>
+     <depend>mcm_transaid_mcm_transaid</depend>
+     <depend>odds_oddinfo</depend>
+     <depend>strp_fau_strpmessage</depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+  </export>
+</package>
