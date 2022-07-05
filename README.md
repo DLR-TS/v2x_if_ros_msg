@@ -7,7 +7,7 @@ You must have docker and make installed and configured on your system
 
 1. clone the repository:
 ```bash
-git@gitlab.dlr.de:csa/v2x_if_ros_msg.git && cd v2x_if_ros_msg
+git@github.com:DLR-TS/v2x_if_ros_msg.git && cd v2x_if_ros_msg
 ```
 
 2. build v2x_if_ros_msg:
