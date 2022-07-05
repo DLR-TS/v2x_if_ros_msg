@@ -25,7 +25,11 @@ cmake_minimum_required(VERSION 3.13)
 project(cpm_v1_19_cpm_commondatatypes_descriptions)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++17)
+
+
+add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 find_package(catkin REQUIRED COMPONENTS
     roscpp
@@ -132,14 +136,37 @@ generate_messages(
 )
 
 catkin_package(
-    INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
-    CATKIN_DEPENDS message_runtime std_msgs its_container_v2_its_container dsrc_v2_dsrc
+    # INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
+    CATKIN_DEPENDS message_runtime std_msgs
     # CATKIN_DEPENDS message_runtime roscpp
 )
 
-add_library(cpm_v1_19_cpm_commondatatypes_descriptions INTERFACE)
+install(TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}_Targets
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-add_dependencies(cpm_v1_19_cpm_commondatatypes_descriptions ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-export(TARGETS cpm_v1_19_cpm_commondatatypes_descriptions FILE cpm_v1_19_cpm_commondatatypes_descriptions.cmake)
+include(CMakePackageConfigHelpers)
 
+configure_package_config_file(
+  "${PROJECT_SOURCE_DIR}/cmake/LibraryConfig.cmake.in"
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+  INSTALL_DESTINATION
+  ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake)
+
+install(EXPORT ${PROJECT_NAME}_Targets
+        COMPONENT ${PROJECT_NAME}
+        FILE ${PROJECT_NAME}Targets.cmake
+        NAMESPACE ${PROJECT_NAME}::
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
+)
+
+install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+              # "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
+        COMPONENT ${PROJECT_NAME}
+)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/../build/devel/include/${PROJECT_NAME} DESTINATION .) 

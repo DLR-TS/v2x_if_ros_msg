@@ -17,4 +17,7 @@ project(v2x_if_ros_msg)
 
 add_subdirectory(its_container_v2)
 add_subdirectory(cam_v2)
+add_subdirectory(denm_v2)
+add_subdirectory(dscr_v2)
+add_subdirectory(cpm_v1_19)
 
