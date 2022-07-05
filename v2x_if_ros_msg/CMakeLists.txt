@@ -17,4 +17,13 @@ project(v2x_if_ros_msg)
 
 add_subdirectory(its_container_v2)
 add_subdirectory(cam_v2)
+add_subdirectory(dsrc_v2/dsrc_v2_electronicregistrationidentificationvehicledatamodule)
 
+set(PACKAGE_VENDOR "DLR TS-KOS-SAI")
+set(PACKAGE_DESCRIPTION "v2x_if_ros_msg")
+set(PACKAGE_MAINTAINER "DLR TS-KOS-SAI")
+set(PACKAGE_MAINTAINER_EMAIL "ts-kos-sai@dlr.de")
+
+include(GNUInstallDirs)
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(Packing)
