@@ -28,7 +28,6 @@ add_compile_options(-std=c++17)
 
 include(GNUInstallDirs)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-# include(Packing)
 
 find_package(catkin REQUIRED COMPONENTS
     roscpp
