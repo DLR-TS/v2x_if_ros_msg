@@ -22,7 +22,7 @@
 # 
 # 
 cmake_minimum_required(VERSION 3.13)
-project(cam_v2)
+project(cam_v2_cam_pdu_descriptions)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++17)

@@ -23,7 +23,7 @@
     
     -->
     <package format="2">
-    <name>cpm_v1_19_cpm</name>
+    <name>cpm_v1_19_cpm_commondatatypes_descriptions</name>
     <version>0.0.0</version>
     <description>TODO</description>
     <maintainer email="v2x-ts@dlr.de">DLR-TS-FZE-VSO</maintainer>
@@ -31,7 +31,6 @@
     <depend>roscpp</depend>
     <depend>std_msgs</depend>
     <depend>message_runtime</depend>
-    <depend>cam_v2_cam_pdu_descriptions</depend>
     <depend>dsrc_v2_dsrc</depend>
     <depend>its_container_v2_its_container</depend>
     <build_depend>message_generation</build_depend>

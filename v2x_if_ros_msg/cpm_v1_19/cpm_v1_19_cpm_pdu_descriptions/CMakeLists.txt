@@ -13,20 +13,18 @@
 # 
 # File automatically generated with DLR Wind v2 (2021)
 # 
-# This file belongs to the DLR Wind project de.dlr.ts.v2x:cam_v2:1.6
+# This file belongs to the DLR Wind project de.dlr.ts.v2x:cpm_v1_19:1.3
 # 
-# Module: CAM_PDU_Descriptions {itu-t(0) identified-organization(4) etsi(0) itsDomain(5) 
-#     wg1(1) en(302637) cam(2) version(2)}
+# Module: CPM_PDU_Descriptions {itu-t(0) identified-organization(4) etsi(0) itsDomain(5) 
+#     wg1(1) ts(103324) cpm(1) version1(1)}
 # 
 # For support contact v2x-ts@dlr.de
 # 
 # 
-cmake_minimum_required(VERSION 3.13)
-project(strp_fau_strpmessage)
+cmake_minimum_required(VERSION 2.8.3)
+project(cpm_v1_19_cpm_pdu_descriptions)
 
-## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++17)
-
 
 add_library(${PROJECT_NAME} INTERFACE)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
@@ -35,45 +33,47 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
     message_generation
+    cam_v2_cam_pdu_descriptions
+    cpm_v1_19_cpm_commondatatypes_descriptions
+    cpm_v1_19_cpm_freespaceaddendum_descriptions
+    cpm_v1_19_cpm_originatingstationdata_descriptions
+    cpm_v1_19_cpm_perceivedobject_descriptions
+    cpm_v1_19_cpm_sensorinformation_descriptions
     its_container_v2_its_container
 )
 find_package(Boost)
 
 add_message_files(
     FILES
-    Accept.msg             
-    Cancel.msg                 
-    DistanceAlongPath.msg      
-    FixedBlock.msg             
-    PositionGate.msg           
-    ReferencePosition.msg      
-    Reject.msg                 
-    RelativePosition_east.msg  
-    RelativePosition.msg       
-    RelativePosition_north.msg
-    RelativePosition_up.msg
-    RequestID.msg
-    Request.msg
-    ReservationShape.msg
-    SpaceTimeReservationProcedure.msg
-    STRPMessageType.msg
-    TimeGate.msg
-    TimeOffset.msg
+    CPM.msg
+    CollectivePerceptionMessage.msg
+    CpmContainerId.msg
+    CpmManagementContainer.msg
+    CpmParameters.msg
+    CpmParameters_perceptionData.msg
+    CpmPerceptionDataContainer.msg
+    CpmStationDataContainer.msg
+    CpmStationDataId.msg
 )
 
 generate_messages(
     DEPENDENCIES
     std_msgs
     its_container_v2_its_container
+    cam_v2_cam_pdu_descriptions
+    cpm_v1_19_cpm_freespaceaddendum_descriptions
+    cpm_v1_19_cpm_sensorinformation_descriptions
+    cpm_v1_19_cpm_originatingstationdata_descriptions
+    cpm_v1_19_cpm_commondatatypes_descriptions
+    cpm_v1_19_cpm_perceivedobject_descriptions
 )
 
 ##------------------  Receiver  ------------------##
 # add_executable(receiver
 #     src/receiver.cpp
 #     src/udp_receiver.cpp
-#     src/cam_v2_cam_pdu_descriptions_translator_wind2ros.cpp
-#     src/cam_v2_cam_pdu_descriptions_receiver.cpp
-#     src/cam_v2_cam_pdu_descriptions_rserial_decoder.cpp
+#     src/cpm_v1_19_cpm_pdu_descriptions_translator_wind2ros.cpp
+#     src/cpm_v1_19_cpm_pdu_descriptions_receiver.cpp
 # )
 # add_dependencies(receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(receiver ${catkin_LIBRARIES})
@@ -85,9 +85,8 @@ generate_messages(
 # add_executable(sender
 #     src/sender.cpp
 #     src/udp_sender.cpp
-#     src/cam_v2_cam_pdu_descriptions_translator_ros2wind.cpp
-#     src/cam_v2_cam_pdu_descriptions_sender.cpp
-#     src/cam_v2_cam_pdu_descriptions_rserial_encoder.cpp
+#     src/cpm_v1_19_cpm_pdu_descriptions_translator_ros2wind.cpp
+#     src/cpm_v1_19_cpm_pdu_descriptions_sender.cpp
 # )
 # add_dependencies(sender ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(sender ${catkin_LIBRARIES})
@@ -96,7 +95,7 @@ generate_messages(
 ##------------------------------------------------##
 
 catkin_package(
-    # INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
+    INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
     CATKIN_DEPENDS message_runtime std_msgs
     # CATKIN_DEPENDS message_runtime roscpp
 )
@@ -129,4 +128,4 @@ install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
         COMPONENT ${PROJECT_NAME}
 )
 
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/../build/devel/include/${PROJECT_NAME} DESTINATION .) 
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/../../build/devel/include/${PROJECT_NAME} DESTINATION .) 

@@ -61,31 +61,31 @@ generate_messages(
 )
 
 ##------------------  Receiver  ------------------##
-add_executable(receiver
-    src/receiver.cpp
-    src/udp_receiver.cpp
-    src/denm_v2_denm_pdu_descriptions_translator_wind2ros.cpp
-    src/denm_v2_denm_pdu_descriptions_receiver.cpp
-    src/denm_v2_denm_pdu_descriptions_rserial_decoder.cpp
-)
-add_dependencies(receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(receiver ${catkin_LIBRARIES})
-target_include_directories(receiver PRIVATE include ${catkin_INCLUDE_DIRS})
-install(TARGETS receiver RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+# add_executable(receiver
+#     src/receiver.cpp
+#     src/udp_receiver.cpp
+#     src/denm_v2_denm_pdu_descriptions_translator_wind2ros.cpp
+#     src/denm_v2_denm_pdu_descriptions_receiver.cpp
+#     src/denm_v2_denm_pdu_descriptions_rserial_decoder.cpp
+# )
+# add_dependencies(receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# target_link_libraries(receiver ${catkin_LIBRARIES})
+# target_include_directories(receiver PRIVATE include ${catkin_INCLUDE_DIRS})
+# install(TARGETS receiver RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 ##------------------------------------------------##
 
 ##------------------   Sender   ------------------##
-add_executable(sender
-    src/sender.cpp
-    src/udp_sender.cpp
-    src/denm_v2_denm_pdu_descriptions_translator_ros2wind.cpp
-    src/denm_v2_denm_pdu_descriptions_sender.cpp
-    src/denm_v2_denm_pdu_descriptions_rserial_encoder.cpp
-)
-add_dependencies(sender ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(sender ${catkin_LIBRARIES})
-target_include_directories(sender PRIVATE include ${catkin_INCLUDE_DIRS})
-install(TARGETS sender RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+# add_executable(sender
+#     src/sender.cpp
+#     src/udp_sender.cpp
+#     src/denm_v2_denm_pdu_descriptions_translator_ros2wind.cpp
+#     src/denm_v2_denm_pdu_descriptions_sender.cpp
+#     src/denm_v2_denm_pdu_descriptions_rserial_encoder.cpp
+# )
+# add_dependencies(sender ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# target_link_libraries(sender ${catkin_LIBRARIES})
+# target_include_directories(sender PRIVATE include ${catkin_INCLUDE_DIRS})
+# install(TARGETS sender RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 ##------------------------------------------------##
 
 catkin_package(
@@ -122,4 +122,4 @@ install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
         COMPONENT ${PROJECT_NAME}
 )
 
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/build/devel/include DESTINATION .) 
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/../build/devel/include/${PROJECT_NAME} DESTINATION .) 

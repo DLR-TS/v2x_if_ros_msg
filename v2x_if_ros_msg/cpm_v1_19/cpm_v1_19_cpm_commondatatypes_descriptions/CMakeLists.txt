@@ -21,15 +21,10 @@
 # For support contact v2x-ts@dlr.de
 # 
 # 
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 2.8.3)
 project(cpm_v1_19_cpm_commondatatypes_descriptions)
 
-## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++17)
-
-
-add_library(${PROJECT_NAME} INTERFACE)
-add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 find_package(catkin REQUIRED COMPONENTS
     roscpp
@@ -52,22 +47,9 @@ add_message_files(
     CartesianAngle.msg
     CartesianAngleValue.msg
     ClassConfidence.msg
-    CollectivePerceptionMessage.msg
-    CPM.msg
-    CpmContainerId.msg
-    CpmManagementContainer.msg
-    CpmParameters.msg
-    CpmParameters_perceptionData.msg
-    CpmPerceptionDataContainer.msg
-    CpmStationDataContainer.msg
-    CpmStationDataId.msg
-    DetectionArea.msg
     DistanceConfidence.msg
     DistanceValue.msg
     DynamicStatus.msg
-    FreeSpaceAddendum.msg
-    FreeSpaceAddendumContainer.msg
-    FreeSpaceArea.msg
     FreeSpaceConfidence.msg
     FrontOverhang.msg
     HitchPointOffset.msg
@@ -90,13 +72,8 @@ add_message_files(
     ObjectDistance.msg
     ObjectRefPoint.msg
     OffsetPoint.msg
-    OriginatingRSUContainer.msg
-    OriginatingVehicleContainer.msg
     OtherSubclassType.msg
     PersonSubclassType.msg
-    PerceivedObject.msg
-    PerceivedObjectContainer.msg
-    PerceivedObjectContainer_perceivedObjects.msg
     PolyPointList.msg
     Radius.msg
     Range.msg
@@ -106,8 +83,6 @@ add_message_files(
     SemiRangeLength.msg
     SensorHeight.msg
     SensorIdList.msg
-    SensorInformation.msg
-    SensorInformationContainer.msg
     SensorType.msg
     ShadowingApplies.msg
     SpeedExtended.msg
@@ -118,9 +93,6 @@ add_message_files(
     UnknownSubclassType.msg
     VehicleHeight.msg
     VehicleSubclassType.msg
-    VehicleSensor.msg
-    VehicleSensorProperties.msg
-    VehicleSensorPropertyList.msg
     WGS84Angle.msg
     WGS84AngleValue.msg
     XSensorOffset.msg
@@ -136,10 +108,16 @@ generate_messages(
 )
 
 catkin_package(
-    # INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
-    CATKIN_DEPENDS message_runtime std_msgs
+    INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
+    CATKIN_DEPENDS message_runtime std_msgs its_container_v2_its_container dsrc_v2_dsrc
     # CATKIN_DEPENDS message_runtime roscpp
 )
+
+add_library(cpm_v1_19_cpm_commondatatypes_descriptions INTERFACE)
+
+add_dependencies(cpm_v1_19_cpm_commondatatypes_descriptions ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+export(TARGETS cpm_v1_19_cpm_commondatatypes_descriptions FILE cpm_v1_19_cpm_commondatatypes_descriptions.cmake)
 
 install(TARGETS ${PROJECT_NAME}
         EXPORT ${PROJECT_NAME}_Targets
@@ -169,4 +147,4 @@ install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
         COMPONENT ${PROJECT_NAME}
 )
 
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/../build/devel/include/${PROJECT_NAME} DESTINATION .) 
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/../../build/devel/include/${PROJECT_NAME} DESTINATION .) 
