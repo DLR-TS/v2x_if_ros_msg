@@ -68,36 +68,8 @@ generate_messages(
     cpm_v1_19_cpm_perceivedobject_descriptions
 )
 
-##------------------  Receiver  ------------------##
-# add_executable(receiver
-#     src/receiver.cpp
-#     src/udp_receiver.cpp
-#     src/cpm_v1_19_cpm_pdu_descriptions_translator_wind2ros.cpp
-#     src/cpm_v1_19_cpm_pdu_descriptions_receiver.cpp
-# )
-# add_dependencies(receiver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-# target_link_libraries(receiver ${catkin_LIBRARIES})
-# target_include_directories(receiver PRIVATE include ${catkin_INCLUDE_DIRS})
-# install(TARGETS receiver RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-##------------------------------------------------##
-
-##------------------   Sender   ------------------##
-# add_executable(sender
-#     src/sender.cpp
-#     src/udp_sender.cpp
-#     src/cpm_v1_19_cpm_pdu_descriptions_translator_ros2wind.cpp
-#     src/cpm_v1_19_cpm_pdu_descriptions_sender.cpp
-# )
-# add_dependencies(sender ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-# target_link_libraries(sender ${catkin_LIBRARIES})
-# target_include_directories(sender PRIVATE include ${catkin_INCLUDE_DIRS})
-# install(TARGETS sender RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-##------------------------------------------------##
-
 catkin_package(
-    INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
     CATKIN_DEPENDS message_runtime std_msgs
-    # CATKIN_DEPENDS message_runtime roscpp
 )
 
 install(TARGETS ${PROJECT_NAME}
@@ -123,7 +95,6 @@ install(EXPORT ${PROJECT_NAME}_Targets
 )
 
 install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-              # "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
         COMPONENT ${PROJECT_NAME}
 )

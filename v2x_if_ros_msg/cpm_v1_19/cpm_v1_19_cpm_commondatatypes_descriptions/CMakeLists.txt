@@ -26,6 +26,9 @@ project(cpm_v1_19_cpm_commondatatypes_descriptions)
 
 add_compile_options(-std=c++17)
 
+add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
@@ -108,16 +111,8 @@ generate_messages(
 )
 
 catkin_package(
-    INCLUDE_DIRS include  # This indicates that the folder "include" within the package folder is where exported headers go
     CATKIN_DEPENDS message_runtime std_msgs its_container_v2_its_container dsrc_v2_dsrc
-    # CATKIN_DEPENDS message_runtime roscpp
 )
-
-add_library(cpm_v1_19_cpm_commondatatypes_descriptions INTERFACE)
-
-add_dependencies(cpm_v1_19_cpm_commondatatypes_descriptions ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-export(TARGETS cpm_v1_19_cpm_commondatatypes_descriptions FILE cpm_v1_19_cpm_commondatatypes_descriptions.cmake)
 
 install(TARGETS ${PROJECT_NAME}
         EXPORT ${PROJECT_NAME}_Targets
@@ -142,7 +137,6 @@ install(EXPORT ${PROJECT_NAME}_Targets
 )
 
 install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-              # "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
         COMPONENT ${PROJECT_NAME}
 )
