@@ -27,7 +27,8 @@ WORKDIR /tmp/${PROJECT}/build
 RUN source /opt/ros/noetic/setup.bash && \
     cmake .. && \
     cmake --build . --config Release --target install -- -j $(nproc) && \
-    cpack -G DEB && find . -type f -name "*.deb" | xargs mv -t . 
+    cpack -G DEB && find . -type f -name "*.deb" | xargs mv -t . && \
+    cd /tmp/${PROJECT}/build && ln -s devel install 
 #RUN bash catkin_build.sh
 
 #FROM alpine:3.14
