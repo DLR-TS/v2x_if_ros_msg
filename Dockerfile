@@ -34,5 +34,5 @@ RUN source /opt/ros/noetic/setup.bash && \
 FROM alpine:3.14
 
 ARG PROJECT
-COPY --from=v2x_if_ros_msg_builder /tmp/${PROJECT}/build /tmp/${PROJECT}/build
+COPY --from=v2x_if_ros_msg_builder /tmp/${PROJECT} /tmp/${PROJECT}
 
