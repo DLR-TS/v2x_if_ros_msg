@@ -25,7 +25,7 @@ build:
         touch CATKIN_IGNORE && \
         docker build --network="host" -t ${IMAGE_NAME} . 
 	cd "${ROOT_DIR}" && \
-        docker cp $$(docker create --rm ${IMAGE_NAME}):/tmp/${PROJECT}/build ${PROJECT}/build
+        docker cp $$(docker create --rm ${IMAGE_NAME}):/tmp/${PROJECT}/${PROJECT}/build ${PROJECT}/build
 
 clean: 
 	rm -rf ${ROOT_DIR}/${PROJECT}/build
