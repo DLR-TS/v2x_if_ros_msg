@@ -5,9 +5,9 @@ Temporary home of the v2x msgs to build up a self-contained build module
 ## Getting Started
 You must have docker and make installed and configured on your system
 
-1. clone the repository:
+1. clone the repository with submodules:
 ```bash
-git@github.com:DLR-TS/v2x_if_ros_msg.git && cd v2x_if_ros_msg
+git clone --recurse-submodules -j8 git@github.com:DLR-TS/v2x_if_ros_msg.git && cd v2x_if_ros_msg
 ```
 
 2. build v2x_if_ros_msg:

@@ -1,4 +1,11 @@
 v2x_if_ros_msg/build
 CATKIN_IGNORE
-.git
+**.git
 **/build
+v2x_if_ros_msg/build
+**/tmp
+Makefile
+.gitignore
+.dockerignore
+**.docker*
+**make_gadgets
