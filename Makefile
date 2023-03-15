@@ -31,5 +31,5 @@ build: root_check docker_group_check set_env clean ## Build v2x_if_ros_msg
 .PHONY: clean
 clean: set_env ## Clean v2x_if_ros_msg build artifacts 
 	rm -rf "${ROOT_DIR}/${PROJECT}/build"
-	docker rm $$(docker ps -a -q --filter "ancestor=${PROJECT}:${TAG}") 2> /dev/null || true
-	docker rmi $$(docker images -q ${PROJECT}:${TAG}) 2> /dev/null || true
+	docker rm $$(docker ps -a -q --filter "ancestor=${PROJECT}:${TAG}") --force 2> /dev/null || true
+	docker rmi $$(docker images -q ${PROJECT}:${TAG}) --force 2> /dev/null || true
