@@ -8,7 +8,7 @@ MAKEFLAGS += --no-print-directory
 V2X_IF_ROS_MSG_PROJECT=v2x_if_ros_msg
 
 V2X_IF_ROS_MSG_MAKEFILE_PATH:=$(shell realpath "$(shell dirname "$(lastword $(MAKEFILE_LIST))")")
-ifeq ($(SUBMODULES_PATH),)
+ifeq ($(wildcard $(MAKE_GADGETS_PATH)/*),)
 V2X_IF_ROS_MSG_SUBMODULES_PATH:=${V2X_IF_ROS_MSG_MAKEFILE_PATH}
 else
 V2X_IF_ROS_MSG_SUBMODULES_PATH:=$(shell realpath ${SUBMODULES_PATH})
