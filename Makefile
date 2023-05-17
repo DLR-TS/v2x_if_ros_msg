@@ -3,13 +3,16 @@ SHELL:=/bin/bash
 .DEFAULT_GOAL := all
 
 ROOT_DIR:=$(shell dirname "$(realpath $(firstword $(MAKEFILE_LIST)))")
-MAKEFILE_PATH:=$(shell dirname "$(abspath "$(lastword $(MAKEFILE_LIST)"))")
 
 include v2x_if_ros_msg.mk
 
 .EXPORT_ALL_VARIABLES:
 DOCKER_BUILDKIT?=1
 DOCKER_CONFIG?=
+
+SUBMODULES_PATH?=${ROOT_DIR}
+
+include ${SUBMODULES_PATH}/ci_teststand/ci_teststand.mk
 
 .PHONY: all
 all: build
@@ -31,3 +34,6 @@ clean: set_env ## Clean v2x_if_ros_msg build artifacts
 	rm -rf "${ROOT_DIR}/${PROJECT}/build"
 	docker rm $$(docker ps -a -q --filter "ancestor=${PROJECT}:${TAG}") --force 2> /dev/null || true
 	docker rmi $$(docker images -q ${PROJECT}:${TAG}) --force 2> /dev/null || true
+
+.PHONY: test
+test: ci_test

@@ -9,3 +9,8 @@ Makefile
 .dockerignore
 **.docker*
 **make_gadgets
+.log
+ci_teststand
+ci.env
+.ci
+.tests
