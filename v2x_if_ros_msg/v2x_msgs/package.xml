@@ -32,7 +32,7 @@
      <depend>dsrc_v2_srem_pdu_descriptions</depend>
      <depend>dsrc_v2_ssem_pdu_descriptions</depend>
      <depend>cpm_v1_19</depend>
-     <depend>mcm_dmove_mcm_dmove</depend>
+     <depend>mcm_dmove</depend>
      <depend>mcm_transaid_mcm_transaid</depend>
      <depend>odds_oddinfo</depend>
      <depend>strp_fau_strpmessage</depend>

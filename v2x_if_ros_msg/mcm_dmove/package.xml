@@ -23,7 +23,7 @@
     
     -->
     <package format="2">
-    <name>mcm_dmove_mcm_dmove</name>
+    <name>mcm_dmove</name>
     <version>0.0.0</version>
     <description>TODO</description>
     <maintainer email="v2x-ts@dlr.de">DLR-TS-FZE-VSO</maintainer>

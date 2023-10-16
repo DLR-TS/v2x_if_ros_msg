@@ -22,7 +22,7 @@
 # 
 # 
 cmake_minimum_required(VERSION 3.13)
-project(mcm_dmove_mcm_dmove)
+project(mcm_dmove)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++17)
